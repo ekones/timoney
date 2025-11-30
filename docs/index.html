@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Harcamalarınızı çalışma saatine dönüştürerek, paranın gerçek değerini keşfedin">
+    <title>Timoney - Zamanını Değerlendir</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="16" r="15" stroke="url(#gradient)" stroke-width="2"/>
+                    <path d="M16 8V16L20 20" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="gradient" x1="0" y1="0" x2="32" y2="32">
+                            <stop offset="0%" stop-color="#a78bfa"/>
+                            <stop offset="100%" stop-color="#ec4899"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <h1>Timoney</h1>
+            </div>
+            <p class="tagline">Paranın gerçek maliyetini keşfet</p>
+        </header>
+
+        <!-- Income Setup Card -->
+        <section class="glass-card income-card">
+            <h2>Gelir Bilgilerin</h2>
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <label for="monthlySalary">Aylık Maaş (₺)</label>
+                    <input type="number" id="monthlySalary" placeholder="30000" min="0" step="100">
+                </div>
+                <div class="input-wrapper">
+                    <label for="monthlyHours">Aylık Çalışma Saati</label>
+                    <input type="number" id="monthlyHours" placeholder="300" min="0" step="1">
+                </div>
+            </div>
+            
+            <div class="hourly-rate-display" id="hourlyRateDisplay">
+                <div class="rate-label">Saatlik Kazancın</div>
+                <div class="rate-value" id="hourlyRate">--</div>
+            </div>
+        </section>
+
+        <!-- Add Expense Card -->
+        <section class="glass-card add-expense-card">
+            <h2>Yeni Harcama Ekle</h2>
+            <form id="expenseForm" class="expense-form">
+                <div class="input-group">
+                    <div class="input-wrapper flex-2">
+                        <label for="expenseName">Harcama</label>
+                        <input type="text" id="expenseName" placeholder="Konser bileti" required>
+                    </div>
+                    <div class="input-wrapper flex-1">
+                        <label for="expenseAmount">Tutar (₺)</label>
+                        <input type="number" id="expenseAmount" placeholder="5000" min="0" step="1" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M10 5V15M5 10H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Harcama Ekle
+                </button>
+            </form>
+        </section>
+
+        <!-- Summary Card -->
+        <section class="glass-card summary-card" id="summaryCard" style="display: none;">
+            <h2>Özet</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-label">Toplam Harcama</div>
+                    <div class="summary-value" id="totalExpense">0 ₺</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Toplam Çalışma Saati</div>
+                    <div class="summary-value highlight" id="totalHours">0 saat</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Kalan Maaş</div>
+                    <div class="summary-value" id="remainingSalary">0 ₺</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Maaşın %</div>
+                    <div class="summary-value" id="percentageUsed">0%</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expenses List -->
+        <section class="expenses-section" id="expensesSection" style="display: none;">
+            <h2 class="section-title">Harcamalarım</h2>
+            <div class="expenses-list" id="expensesList">
+                <!-- Expenses will be added here dynamically -->
+            </div>
+        </section>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState">
+            <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                <circle cx="60" cy="60" r="50" stroke="url(#emptyGradient)" stroke-width="2" opacity="0.3"/>
+                <path d="M60 30V60L80 80" stroke="url(#emptyGradient)" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+                <defs>
+                    <linearGradient id="emptyGradient" x1="0" y1="0" x2="120" y2="120">
+                        <stop offset="0%" stop-color="#a78bfa"/>
+                        <stop offset="100%" stop-color="#ec4899"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <h3>Henüz harcama eklemedin</h3>
+            <p>Yukarıdaki formdan harcama ekleyerek, her bir harcamanın kaç saatlik emeğe denk geldiğini görebilirsin!</p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Zamanın değerini bil, bilinçli harca ⏰</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
